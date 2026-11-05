@@ -2,7 +2,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mosquee-al-kawthar",
   "compatibility_date": "2026-01-02",
-  "pages_build_output_dir": "./dist",
+  "main": "./dist/_worker.js",
+  "assets": {
+    "directory": "./dist"
+  },
   "compatibility_flags": [
     "nodejs_compat"
   ],

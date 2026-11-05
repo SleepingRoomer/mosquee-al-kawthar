@@ -1,6 +1,5 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import { serveStatic } from 'hono/cloudflare-workers'
 import { getLayout, getHomePage } from './templates/layout'
 import { getCoursArabePage, getStagesPage } from './templates/pages'
 import { getAProposPage, getProjetsPage, getActualitesPage, getContactPage } from './templates/other-pages'
@@ -20,7 +19,6 @@ type Bindings = {
 const app = new Hono<{ Bindings: Bindings }>()
 
 app.use('/api/*', cors())
-app.use('/static/*', serveStatic({ root: './public' }))
 
 const requireAdmin = async (c: any, next: any) => {
   const authHeader = c.req.header('Authorization') || ''
